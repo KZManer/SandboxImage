@@ -47,7 +47,6 @@
         //删除按钮
         _deleteBtn = [KZButton buttonWithType:UIButtonTypeCustom];
         [_deleteBtn setFrame:CGRectMake(_picBackView.width - 45, _picBackView.height - 45, 40, 40)];
-        [_deleteBtn setBackgroundColor:[UIColor redColor]];
         [_deleteBtn setBackgroundImage:[UIImage imageNamed:@"deleteBtnBGI"] forState:UIControlStateNormal];
         [_deleteBtn addTarget:self action:@selector(deleteBtnClicked) forControlEvents:UIControlEventTouchUpInside];
         [_picBackView addSubview:_deleteBtn];
@@ -60,13 +59,23 @@
             [view removeFromSuperview];
         }
     }
-    for (int i = 0; i<addressArrs.count; i++) {
-        UIImage *image = [UIImage imageWithContentsOfFile:addressArrs[i]];
-        KZView *kView = [[KZView alloc]initWithFrame:CGRectMake(_picBackView.width * i, 0, _picBackView.width, _picBackView.height) image:image];
+    if (addressArrs.count == 0) {
+        [_deleteBtn setHidden:YES];
+        UIImage *noImage = [UIImage imageNamed:@"noImage"];
+        KZView *kView = [[KZView alloc]initWithFrame:CGRectMake(0, 0, _picBackView.width, _picBackView.height) image:noImage];
         [_scrollView addSubview:kView];
+        _scrollView.userInteractionEnabled = NO;
+    } else {
+        [_deleteBtn setHidden:NO];
+        _scrollView.userInteractionEnabled = YES;
+        for (int i = 0; i<addressArrs.count; i++) {
+            UIImage *image = [UIImage imageWithContentsOfFile:addressArrs[i]];
+            KZView *kView = [[KZView alloc]initWithFrame:CGRectMake(_picBackView.width * i, 0, _picBackView.width, _picBackView.height) image:image];
+            [_scrollView addSubview:kView];
+        }
+        _scrollView.contentSize = CGSizeMake(_picBackView.bounds.size.width * addressArrs.count, _picBackView.bounds.size.height);
+        _scrollView.contentOffset = CGPointMake(_picBackView.bounds.size.width * showIndex, 0);
     }
-    _scrollView.contentSize = CGSizeMake(_picBackView.bounds.size.width * addressArrs.count, _picBackView.bounds.size.height);
-    _scrollView.contentOffset = CGPointMake(_picBackView.bounds.size.width * showIndex, 0);
     [view addSubview:self];
 }
 //删除按钮被点击

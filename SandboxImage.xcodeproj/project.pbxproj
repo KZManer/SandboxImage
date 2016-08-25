@@ -28,6 +28,7 @@
 		4F44746D1D6EE5D70050D3A6 /* StorePhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F44746A1D6EE5D70050D3A6 /* StorePhotoView.m */; };
 		4F4474711D6EE5EF0050D3A6 /* ShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F44746F1D6EE5EF0050D3A6 /* ShowViewController.m */; };
 		4F4474791D6EF8B40050D3A6 /* UIViewExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F4474781D6EF8B40050D3A6 /* UIViewExt.m */; };
+		4F44747B1D6EFD890050D3A6 /* noImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F44747A1D6EFD890050D3A6 /* noImage.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,7 @@
 		4F44746F1D6EE5EF0050D3A6 /* ShowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowViewController.m; sourceTree = "<group>"; };
 		4F4474771D6EF8B40050D3A6 /* UIViewExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewExt.h; sourceTree = "<group>"; };
 		4F4474781D6EF8B40050D3A6 /* UIViewExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIViewExt.m; sourceTree = "<group>"; };
+		4F44747A1D6EFD890050D3A6 /* noImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noImage.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 				4F4474341D6EE5A10050D3A6 /* SandboxImageTests */,
 				4F44743F1D6EE5A10050D3A6 /* SandboxImageUITests */,
 				4F4474161D6EE5A10050D3A6 /* Products */,
+				4F44747A1D6EFD890050D3A6 /* noImage.png */,
 			);
 			sourceTree = "<group>";
 		};
@@ -321,6 +324,7 @@
 			files = (
 				4F44742B1D6EE5A10050D3A6 /* LaunchScreen.storyboard in Resources */,
 				4F4474281D6EE5A10050D3A6 /* Assets.xcassets in Resources */,
+				4F44747B1D6EFD890050D3A6 /* noImage.png in Resources */,
 				4F4474611D6EE5BE0050D3A6 /* KZImageBundle.bundle in Resources */,
 				4F4474231D6EE5A10050D3A6 /* Main.storyboard in Resources */,
 			);
