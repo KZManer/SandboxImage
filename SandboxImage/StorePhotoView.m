@@ -16,6 +16,7 @@
     UIView *_picBackView;//照片背景view
     KZButton *_deleteBtn;
     NSMutableArray *_kViews;//存放所有kview
+    NSMutableArray *_scrollViewArrs;//存放kView的scrollView，用于还原图片的原始大小
 }
 @end
 
@@ -54,6 +55,7 @@
     return self;
 }
 - (void)showInView:(UIView *)view addressArrs:(NSArray *)addressArrs showIndex:(NSInteger)showIndex{
+    _scrollViewArrs = [NSMutableArray arrayWithCapacity:20];
     for (UIView *view in _scrollView.subviews) {
         if ([view isKindOfClass:[KZView class]]) {
             [view removeFromSuperview];
@@ -71,6 +73,7 @@
         for (int i = 0; i<addressArrs.count; i++) {
             UIImage *image = [UIImage imageWithContentsOfFile:addressArrs[i]];
             KZView *kView = [[KZView alloc]initWithFrame:CGRectMake(_picBackView.width * i, 0, _picBackView.width, _picBackView.height) image:image];
+            [_scrollViewArrs addObject:kView.scrollView];
             [_scrollView addSubview:kView];
         }
         _scrollView.contentSize = CGSizeMake(_picBackView.bounds.size.width * addressArrs.count, _picBackView.bounds.size.height);
@@ -85,6 +88,11 @@
     }
 }
 #pragma mark-UIScrollViewDelegate
+//结束滚动的时候上一页的图片回到原始大小
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+    KZView *kView = [[KZView alloc]init];
+    [kView imageBackOriginalSize:_scrollViewArrs];
+}
 //当前是第几张图片
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     int indexImage = scrollView.contentOffset.x/_picBackView.width;

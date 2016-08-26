@@ -13,10 +13,15 @@
 //要删除的照片的在数组中的下标
 @property (nonatomic, assign) int index;
 
+
 @end
 
 @interface KZView : UIView<UIScrollViewDelegate>
 
+@property (nonatomic, strong) UIScrollView *scrollView;
+
 - (id)initWithFrame:(CGRect)frame image:(UIImage *)image;
+
+- (void)imageBackOriginalSize:(NSArray *)imageViews;
 
 @end

@@ -18,7 +18,6 @@
 
 @interface KZView ()
 {
-    UIScrollView *_scrollView;
     UIImageView *_imageView;
 }
 @end
@@ -111,9 +110,9 @@
     CGRect zoomRect = [self zoomRectForScale:scale withCenter:[gesture locationInView:gesture.view]];
     [scrollView zoomToRect:zoomRect animated:YES];
 }
-- (void)imageBackOriginalSize:(NSArray *)imageViews{
-    for (UIImageView *imageView in imageViews) {
-        UIScrollView *scrollView = (UIScrollView *)imageView.superview;
+
+- (void)imageBackOriginalSize:(NSArray *)imageViews {
+    for (UIScrollView *scrollView in imageViews) {
         scrollView.zoomScale = 1;
     }
 }
